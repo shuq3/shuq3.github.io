@@ -1,0 +1,16 @@
+---
+layout: page
+---
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <div class="title" itemprop="name headline">{{ page.title }}</div>
+    <div class="date" itemprop="datePublished">{{ page.date | date: '%Y 年 %m 月 %d 日' }}</div>
+  </header>
+
+  <div class="padding-top" itemprop="articleBody">
+    {{ content }}
+  </div>
+  <!-- 引入评论系统 -->
+  {% include comments.html %}
+</article>

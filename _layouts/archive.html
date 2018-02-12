@@ -1,0 +1,32 @@
+---
+layout: page
+---
+
+{% assign posts = site.posts %}
+{% if page.posts %}
+  {% assign posts = page.posts %}
+{% endif %}
+
+<div class="page-title">归档</div>
+{% assign prev = '' %}
+{% for post in posts %}
+  {% if forloop.first %}
+    {% capture prev %}{{ post.date | date: '%Y' }}{% endcapture %}
+    <div class="year">
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <span>{{ prev }}</span>
+    </div>
+  {% endif %}
+  {% capture this %}{{ post.date | date: '%Y' }}{% endcapture %}
+  {% if this != prev %}
+    {% assign prev = this %}
+    <div class="year">
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <span>{{ this }}</span>
+    </div>
+  {% endif %}
+  <div class="post-title">
+    <span class="badge badge-secondary">{{ post.date | date: '%m-%d' }}</span>
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+  </div>
+{% endfor %}
