@@ -9,10 +9,11 @@ markdown: kramdown
 paginate: 8
 paginate_path: "/page:num/"
 jekyll-archives:
-  enabled:
-    - tags
+  enabled: all
   layout: 'archive'
   permalinks:
+    year: '/archives/year/:year/'
+    month: '/archives/month/:year-:month/'
     tag: '/archives/tag/:name/'
 sass:
   sass_dir: _sass
